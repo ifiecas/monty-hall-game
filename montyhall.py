@@ -22,7 +22,7 @@ col1, col2 = st.columns([1, 1.8], gap="large")
 with col1:
     st.markdown("""
     <div style="padding: 25px; background-color: #f8f9fa; border-radius: 10px; width: 100%;">
-        <h2>🎮 How to Play: Read this first before you jump in!"</h2>
+        <h3>🎮 Read this first before you jump in!"</h3>
         <p>1️⃣ <b>Pick a door</b>(1, 2, or 3) – one of them hides a brand new car!</p>
         <p>2️⃣ <b>The host reveals a door</b> that hides a goat.</p>
         <p>3️⃣ <b>Choose to switch or stay</b>.</p>
