@@ -83,7 +83,7 @@ with col2:
         final_choice = st.session_state.final_choice
         st.write("### 🎉 Final Result")
         st.write(f"You chose door **{final_choice + 1}**...")
-        st.write(f"Behind the door: **{st.session_state.prizes[final_choice]}**")
+        st.write(f"Behind the door: {st.session_state.prizes[final_choice]}")
         
         if switch_decision == "Switch":
             st.success("🏆 Congratulations! You won the **car**! 🚗")
