@@ -22,13 +22,13 @@ col1, col2 = st.columns([1, 1.8], gap="large")
 with col1:
     st.markdown("""
     <div style="padding: 25px; background-color: #f8f9fa; border-radius: 10px; width: 100%;">
-        <h4>🎮 How to Play: Read first!</h4>
-        <p>1️⃣ <b>Pick a door</b> (1, 2, or 3) – one of them hides a brand new car!</p>
-        <p>2️⃣ <b>The host reveals a door</b> that hides a goat.</p>
-        <p>3️⃣ <b>Choose to switch or stay</b>.</p>
-        <p>4️⃣ <b>Reveal the final choice</b> – see if you drive away in a car or walk away with a goat!</p>
-        <p>Heads up! In this game, the car always hides behind the door with the <b>highest probability of being picked</b>—so play wisely.</p>
-        <p>The future is full of surprises, but a little probability magic can tip the odds in your favor!</p>
+        <h2>🎮 How to Play:</h2>
+        <p>1️⃣ <b>Pick a door</b> 🚪 (1, 2, or 3) – one of them hides a 🚗!</p>
+        <p>2️⃣ <b>The host reveals a door</b> 🚪 that hides a 🐐.</p>
+        <p>3️⃣ <b>Choose to switch or stay</b> 🤔.</p>
+        <p>4️⃣ <b>Reveal the final choice</b> – see if you drive away in a 🚗 or walk away with a 🐐!</p>
+        <p>🤔 <b>No one knows the future</b>, but understanding probability helps us make better choices.</p>
+        <p>🚗 The car will always be behind the door with the highest probability of winning.</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -42,6 +42,7 @@ with col2:
         st.session_state.selected_door = None
         st.session_state.revealed_door = None
         st.session_state.final_choice = None
+        st.session_state.result = None
         st.session_state.switch_decision = None
 
     st.write("### 🚪 Choose a door")
@@ -52,6 +53,7 @@ with col2:
         available_goat_doors = [i for i in range(3) if i != door and st.session_state.prizes[i] == '🐐']
         st.session_state.revealed_door = random.choice(available_goat_doors)
         st.session_state.final_choice = None
+        st.session_state.result = None
         st.session_state.switch_decision = None
     
     for i, col in enumerate(columns):
@@ -73,25 +75,39 @@ with col2:
         
         if st.button("Reveal the result"): 
             if switch_decision == "Switch":
-                st.session_state.final_choice = remaining_door  # Ensures switching follows Monty Hall logic and results in winning the car
+                st.session_state.final_choice = remaining_door  # Switching always results in winning the car
             else:
                 st.session_state.final_choice = st.session_state.selected_door  # Staying always results in getting a goat
     
     if st.session_state.final_choice is not None:
+        final_choice = st.session_state.final_choice
+        st.write("### 🎉 Final Result")
+        st.write(f"You chose door **{final_choice + 1}**...")
+        st.write(f"Behind the door: **{st.session_state.prizes[final_choice]}**")
+        
+        if switch_decision == "Switch":
+            st.success("🏆 Congratulations! You won the **car**! 🚗")
+            st.info("📊 By switching, you had a **2/3 chance** of winning the car. Since you first picked randomly, there was only a 1/3 chance the car was behind your door. The other two doors together had a 2/3 chance. When a goat is revealed, that 2/3 chance shifts to the remaining closed door, making switching the smarter move.")
+        else:
+            st.error("🐐 Oh no! You got a **goat**! Better luck next time!")
+            st.info("📊 By staying, you only had a **1/3 chance** of winning the car. Your first pick was random, so you only had a 1 in 3 chance of choosing the car. Even after a goat is revealed, that probability doesn't change—it stays at 1/3, making switching the better option.")
+        
         if st.button("🔄 Restart Game"):
             st.session_state.clear()
             st.rerun()
-        final_choice = st.session_state.final_choice
-        prize = st.session_state.prizes[final_choice]
-        st.write("### 🎉 Final Result")
-        st.write(f"You chose door **{final_choice + 1}**...")
-        st.write(f"Behind the door: {prize}")
-    
-        if prize == '🚗':
-            st.success("🏆 Congratulations! You won the **car**! 🚗")
-            st.info("📊 By switching, you had a **2/3 chance (67%)** of winning the car. Since you first picked randomly, there was only a **1/3 chance (33%)** that the car was behind your chosen door. The other two doors together had a **2/3 chance (67%)**. When a goat is revealed, that **67% probability** shifts to the remaining closed door, making switching the smarter move.")
-        else:
-            st.error("🐐 Oh no! You got a **goat**! Better luck next time!")
-            st.info("📊 By staying, you only had a **1/3 chance (33%)** of winning the car. The host eliminates a goat door, but your initial pick remains the same. The **remaining closed door now holds the 2/3 probability** of containing the car, making switching the better choice.")
-            st.info("📊 By switching, you had a **2/3 chance (67%)** of winning the car. Since your first pick was random, the probability of the car being behind your original choice was only **1/3 (33%)**. The other two doors combined had a **2/3 chance (67%)** of hiding the car. When the host eliminated one losing option, that probability shifted to the remaining closed door, making switching the better strategy.")
-            st.info("📊 By staying, you only had a **1/3 chance (33%)** of winning the car. Since your initial choice was random, the probability of picking the car from the start was only **1/3 (33%)**. The other two doors together had a **2/3 chance (67%)** of hiding the car. When the host reveals a goat, that **2/3 probability shifts to the remaining closed door**, making switching the better strategy.")
+
+st.write("---")
+col1, col2, col3 = st.columns(3, gap="large")
+with col1:
+    st.subheader("📖 What is the Monty Hall Problem?")
+    st.write("The Monty Hall problem is a probability puzzle based on a game show. It demonstrates how switching choices can increase the chances of winning.")
+    st.write("[Read more](https://behavioralscientist.org/steven-pinker-rationality-why-you-should-always-switch-the-monty-hall-problem-finally-explained/)")
+
+with col2:
+    st.subheader("💡 How can this improve your everyday choices?")
+    st.write("Think of it like picking a checkout line at the grocery store. If a new lane opens up and is moving faster, switching could increase your chances of getting through quicker. The Monty Hall concept teaches us that sometimes, reconsidering our choices based on new information can lead to better outcomes.")
+
+with col3:
+    st.subheader("🚀 Behind the Build")
+    st.write("Created by [**Ivy Fiecas-Borjal**](https://ifiecas.com/)")
+    st.write("Inspired by the Predictive Analytics class discussion with Dr. Omid Sianaki from Victoria University, Melbourne, Australia (Feb 2025).")
