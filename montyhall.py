@@ -23,7 +23,7 @@ with col1:
     st.markdown("""
     <div style="padding: 25px; background-color: #f8f9fa; border-radius: 10px; width: 100%;">
         <h4>🎮 How to Play: Read first!</h4>
-        <p>1️⃣ <b>Pick a door</b>(1, 2, or 3) – one of them hides a brand new car!</p>
+        <p>1️⃣ <b>Pick a door</b> (1, 2, or 3) – one of them hides a brand new car!</p>
         <p>2️⃣ <b>The host reveals a door</b> that hides a goat.</p>
         <p>3️⃣ <b>Choose to switch or stay</b>.</p>
         <p>4️⃣ <b>Reveal the final choice</b> – see if you drive away in a car or walk away with a goat!</p>
@@ -42,7 +42,6 @@ with col2:
         st.session_state.selected_door = None
         st.session_state.revealed_door = None
         st.session_state.final_choice = None
-        st.session_state.result = None
         st.session_state.switch_decision = None
 
     st.write("### 🚪 Choose a door")
@@ -53,7 +52,6 @@ with col2:
         available_goat_doors = [i for i in range(3) if i != door and st.session_state.prizes[i] == '🐐']
         st.session_state.revealed_door = random.choice(available_goat_doors)
         st.session_state.final_choice = None
-        st.session_state.result = None
         st.session_state.switch_decision = None
     
     for i, col in enumerate(columns):
@@ -78,40 +76,15 @@ with col2:
                 st.session_state.final_choice = remaining_door  # Switching always results in winning the car
             else:
                 st.session_state.final_choice = st.session_state.selected_door  # Staying always results in getting a goat
-
-
+    
     if st.session_state.final_choice is not None:
         final_choice = st.session_state.final_choice
+        prize = st.session_state.prizes[final_choice]
         st.write("### 🎉 Final Result")
         st.write(f"You chose door **{final_choice + 1}**...")
-        st.write(f"Behind the door: {st.session_state.prizes[final_choice]}")
-
+        st.write(f"Behind the door: {prize}")
     
-        if switch_decision == "Switch":
+        if prize == '🚗':
             st.success("🏆 Congratulations! You won the **car**! 🚗")
-            st.info("📊 By switching, you had a **2/3 chance (67%)** of winning the car. Since you first picked randomly, there was only a **1/3 chance (33%)** that the car was behind your chosen door. The other two doors together had a **2/3 chance (67%)**. When a goat is revealed, that **67% probability** shifts to the remaining closed door, making switching the smarter move.")
         else:
             st.error("🐐 Oh no! You got a **goat**! Better luck next time!")
-            st.info("📊 By staying, you only had a **1/3 chance (33%)** of winning the car. Your first pick was random, so you only had a **1 in 3 chance (33%)** of choosing the car. Even after a goat is revealed, that probability doesn't change—it stays at **1/3 (33%)**, making switching the better option.")
-    
-        if st.button("🔄 Restart Game"):
-            st.session_state.clear()
-            st.rerun()
-
-
-st.write("---")
-col1, col2, col3 = st.columns(3, gap="large")
-
-with col1:
-    st.markdown('<p style="font-size:14px; font-weight:bold;">📖 What is the Monty Hall Problem?</p>', unsafe_allow_html=True)
-    st.markdown('<p style="font-size:14px;">The Monty Hall problem is a well-known probability puzzle from a game show. It challenges how we think about choices, uncertainty, and probability, often leading to surprising results.</p>', unsafe_allow_html=True)
-    st.markdown('<a href="https://behavioralscientist.org/steven-pinker-rationality-why-you-should-always-switch-the-monty-hall-problem-finally-explained/" style="font-size:14px;">Read more</a>', unsafe_allow_html=True)
-
-with col2:
-    st.markdown('<p style="font-size:14px; font-weight:bold;">💡 How can this improve your everyday choices?</p>', unsafe_allow_html=True)
-    st.markdown('<p style="font-size:14px;">Think of it like picking a checkout line at the grocery store. If a new lane opens up and is moving faster, switching could increase your chances of getting through quicker. The Monty Hall concept teaches us that sometimes, reconsidering our choices based on new information can lead to better outcomes.</p>', unsafe_allow_html=True)
-
-with col3:
-    st.markdown('<p style="font-size:14px; font-weight:bold;">Behind the Build</p>', unsafe_allow_html=True)
-    st.markdown('<p style="font-size:14px;">Created by <a href="https://ifiecas.com/" style="font-size:14px;"><b>Ivy Fiecas-Borjal</b></a></p>', unsafe_allow_html=True)
-    st.markdown('<p style="font-size:14px;">Inspired by the Predictive Analytics class discussion with Dr. Omid Sianaki from Victoria University, Melbourne, Australia (Feb 2025).</p>', unsafe_allow_html=True)
