@@ -86,5 +86,7 @@ with col2:
     
         if prize == '🚗':
             st.success("🏆 Congratulations! You won the **car**! 🚗")
+            st.info("📊 By switching, you had a **2/3 chance (67%)** of winning the car. Since you first picked randomly, there was only a **1/3 chance (33%)** that the car was behind your chosen door. The other two doors together had a **2/3 chance (67%)**. When a goat is revealed, that **67% probability** shifts to the remaining closed door, making switching the smarter move.")
         else:
             st.error("🐐 Oh no! You got a **goat**! Better luck next time!")
+            st.info("📊 By staying, you only had a **1/3 chance (33%)** of winning the car. Since your initial choice was random, the probability of picking the car from the start was only **1/3 (33%)**. The other two doors together had a **2/3 chance (67%)** of hiding the car. When the host reveals a goat, that **2/3 probability shifts to the remaining closed door**, making switching the better strategy.")
