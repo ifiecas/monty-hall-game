@@ -103,7 +103,7 @@ col1, col2, col3 = st.columns(3, gap="large")
 
 with col1:
     st.markdown('<p style="font-size:14px; font-weight:bold;">📖 What is the Monty Hall Problem?</p>', unsafe_allow_html=True)
-    st.markdown('<p style="font-size:14px;">The Monty Hall problem is a probability puzzle based on a game show. It demonstrates how switching choices can increase the chances of winning.</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-size:14px;">The Monty Hall problem is a well-known probability puzzle from a game show. It challenges how we think about choices, uncertainty, and probability, often leading to surprising results.</p>', unsafe_allow_html=True)
     st.markdown('<a href="https://behavioralscientist.org/steven-pinker-rationality-why-you-should-always-switch-the-monty-hall-problem-finally-explained/" style="font-size:14px;">Read more</a>', unsafe_allow_html=True)
 
 with col2:
