@@ -78,6 +78,9 @@ with col2:
                 st.session_state.final_choice = st.session_state.selected_door  # Staying always results in getting a goat
     
     if st.session_state.final_choice is not None:
+        if st.button("🔄 Restart Game"):
+            st.session_state.clear()
+            st.rerun()
         final_choice = st.session_state.final_choice
         prize = st.session_state.prizes[final_choice]
         st.write("### 🎉 Final Result")
