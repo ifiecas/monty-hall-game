@@ -24,7 +24,7 @@ with col1:
     <div style="padding: 25px; background-color: #f8f9fa; border-radius: 10px; width: 100%;">
         <h2>🎮 How to Play:</h2>
         <p>1️⃣ <b>Pick a door</b>(1, 2, or 3) – one of them hides a brand new car!</p>
-        <p>2️⃣ <b>The host reveals a door</b> 🚪 that hides a goat.</p>
+        <p>2️⃣ <b>The host reveals a door</b> that hides a goat.</p>
         <p>3️⃣ <b>Choose to switch or stay</b>.</p>
         <p>4️⃣ <b>Reveal the final choice</b> – see if you drive away in a car or walk away with a goat!</p>
         <p><b>No one knows the future</b>, but understanding probability helps us make better choices.</p>
