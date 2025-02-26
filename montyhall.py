@@ -78,24 +78,24 @@ with col2:
                 st.session_state.final_choice = remaining_door  # Switching always results in winning the car
             else:
                 st.session_state.final_choice = st.session_state.selected_door  # Staying always results in getting a goat
-    
+
+
     if st.session_state.final_choice is not None:
         final_choice = st.session_state.final_choice
         st.write("### 🎉 Final Result")
         st.write(f"You chose door **{final_choice + 1}**...")
         st.write(f"Behind the door: **{st.session_state.prizes[final_choice]}**")
-        
+    
         if switch_decision == "Switch":
             st.success("🏆 Congratulations! You won the **car**! 🚗")
-            st.info("📊 By switching, you had a **2/3 chance** of winning the car. Since you first picked randomly, there was only a 1/3 chance the car was behind your door. The other two doors together had a 2/3 chance. When a goat is revealed, that 2/3 chance shifts to the remaining closed door, making switching the smarter move.")
+            st.info("📊 By switching, you had a **2/3 chance (67%)** of winning the car. Since you first picked randomly, there was only a **1/3 chance (33%)** that the car was behind your chosen door. The other two doors together had a **2/3 chance (67%)**. When a goat is revealed, that **67% probability** shifts to the remaining closed door, making switching the smarter move.")
         else:
             st.error("🐐 Oh no! You got a **goat**! Better luck next time!")
-            st.info("📊 By staying, you only had a **1/3 chance** of winning the car. Your first pick was random, so you only had a 1 in 3 chance of choosing the car. Even after a goat is revealed, that probability doesn't change—it stays at 1/3, making switching the better option.")
-        
+            st.info("📊 By staying, you only had a **1/3 chance (33%)** of winning the car. Your first pick was random, so you only had a **1 in 3 chance (33%)** of choosing the car. Even after a goat is revealed, that probability doesn't change—it stays at **1/3 (33%)**, making switching the better option.")
+    
         if st.button("🔄 Restart Game"):
             st.session_state.clear()
             st.rerun()
-
 
 
 st.write("---")
