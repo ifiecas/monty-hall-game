@@ -73,7 +73,7 @@ with col2:
         
         if st.button("Reveal the result"): 
             if switch_decision == "Switch":
-                st.session_state.final_choice = remaining_door  # Switching always results in winning the car
+                st.session_state.final_choice = remaining_door  # Ensures switching follows Monty Hall logic and results in winning the car
             else:
                 st.session_state.final_choice = st.session_state.selected_door  # Staying always results in getting a goat
     
@@ -92,6 +92,6 @@ with col2:
             st.info("📊 By switching, you had a **2/3 chance (67%)** of winning the car. Since you first picked randomly, there was only a **1/3 chance (33%)** that the car was behind your chosen door. The other two doors together had a **2/3 chance (67%)**. When a goat is revealed, that **67% probability** shifts to the remaining closed door, making switching the smarter move.")
         else:
             st.error("🐐 Oh no! You got a **goat**! Better luck next time!")
-            st.info("📊 By staying, you only had a **1/3 chance (33%)** of winning the car. Since your initial choice was random, the probability of picking the car from the start was only **1/3 (33%)**. The other two doors together had a **2/3 chance (67%)** of hiding the car. When the host reveals a goat, that **2/3 probability shifts to the remaining closed door**, making switching the better strategy.")
+            st.info("📊 By staying, you only had a **1/3 chance (33%)** of winning the car. The host eliminates a goat door, but your initial pick remains the same. The **remaining closed door now holds the 2/3 probability** of containing the car, making switching the better choice.")
             st.info("📊 By switching, you had a **2/3 chance (67%)** of winning the car. Since your first pick was random, the probability of the car being behind your original choice was only **1/3 (33%)**. The other two doors combined had a **2/3 chance (67%)** of hiding the car. When the host eliminated one losing option, that probability shifted to the remaining closed door, making switching the better strategy.")
             st.info("📊 By staying, you only had a **1/3 chance (33%)** of winning the car. Since your initial choice was random, the probability of picking the car from the start was only **1/3 (33%)**. The other two doors together had a **2/3 chance (67%)** of hiding the car. When the host reveals a goat, that **2/3 probability shifts to the remaining closed door**, making switching the better strategy.")
