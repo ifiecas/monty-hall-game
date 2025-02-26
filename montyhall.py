@@ -96,18 +96,20 @@ with col2:
             st.session_state.clear()
             st.rerun()
 
+
 st.write("---")
 col1, col2, col3 = st.columns(3, gap="large")
+
 with col1:
     st.subheader("📖 What is the Monty Hall Problem?")
-    st.write("The Monty Hall problem is a probability puzzle based on a game show. It demonstrates how switching choices can increase the chances of winning.")
-    st.write("[Read more](https://behavioralscientist.org/steven-pinker-rationality-why-you-should-always-switch-the-monty-hall-problem-finally-explained/)")
+    st.markdown('<p style="font-size:14px;">The Monty Hall problem is a probability puzzle based on a game show. It demonstrates how switching choices can increase the chances of winning.</p>', unsafe_allow_html=True)
+    st.markdown('<a href="https://behavioralscientist.org/steven-pinker-rationality-why-you-should-always-switch-the-monty-hall-problem-finally-explained/" style="font-size:14px;">Read more</a>', unsafe_allow_html=True)
 
 with col2:
     st.subheader("💡 How can this improve your everyday choices?")
-    st.write("Think of it like picking a checkout line at the grocery store. If a new lane opens up and is moving faster, switching could increase your chances of getting through quicker. The Monty Hall concept teaches us that sometimes, reconsidering our choices based on new information can lead to better outcomes.")
+    st.markdown('<p style="font-size:14px;">Think of it like picking a checkout line at the grocery store. If a new lane opens up and is moving faster, switching could increase your chances of getting through quicker. The Monty Hall concept teaches us that sometimes, reconsidering our choices based on new information can lead to better outcomes.</p>', unsafe_allow_html=True)
 
 with col3:
     st.subheader("🚀 Behind the Build")
-    st.write("Created by [**Ivy Fiecas-Borjal**](https://ifiecas.com/)")
-    st.write("Inspired by the Predictive Analytics class discussion with Dr. Omid Sianaki from Victoria University, Melbourne, Australia (Feb 2025).")
+    st.markdown('<p style="font-size:14px;">Created by <a href="https://ifiecas.com/" style="font-size:14px;"><b>Ivy Fiecas-Borjal</b></a></p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-size:14px;">Inspired by the Predictive Analytics class discussion with Dr. Omid Sianaki from Victoria University, Melbourne, Australia (Feb 2025).</p>', unsafe_allow_html=True)
