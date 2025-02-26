@@ -111,6 +111,6 @@ with col2:
     st.markdown('<p style="font-size:14px;">Think of it like picking a checkout line at the grocery store. If a new lane opens up and is moving faster, switching could increase your chances of getting through quicker. The Monty Hall concept teaches us that sometimes, reconsidering our choices based on new information can lead to better outcomes.</p>', unsafe_allow_html=True)
 
 with col3:
-    st.markdown('<p style="font-size:14px; font-weight:bold;">🚀 Behind the Build</p>', unsafe_allow_html=True)
+    st.markdown('<p style="font-size:14px; font-weight:bold;">Behind the Build</p>', unsafe_allow_html=True)
     st.markdown('<p style="font-size:14px;">Created by <a href="https://ifiecas.com/" style="font-size:14px;"><b>Ivy Fiecas-Borjal</b></a></p>', unsafe_allow_html=True)
     st.markdown('<p style="font-size:14px;">Inspired by the Predictive Analytics class discussion with Dr. Omid Sianaki from Victoria University, Melbourne, Australia (Feb 2025).</p>', unsafe_allow_html=True)
