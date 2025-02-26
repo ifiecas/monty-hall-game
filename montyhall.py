@@ -27,8 +27,8 @@ with col1:
         <p>2️⃣ <b>The host reveals a door</b> that hides a goat.</p>
         <p>3️⃣ <b>Choose to switch or stay</b>.</p>
         <p>4️⃣ <b>Reveal the final choice</b> – see if you drive away in a car or walk away with a goat!</p>
-        <p><b>No one knows the future</b>, but understanding probability helps us make better choices.</p>
-        <p>For this game, the car will always be behind the door with the highest probability of winning.</p>
+        <p>Heads up! In this game, the car always hides behind the door with the <b>highest probability of being picked</b>—so play wisely."</p>
+        <p>The future is full of surprises, but a little probability magic can tip the odds in your favor!</p>
     </div>
     """, unsafe_allow_html=True)
 
