@@ -21,20 +21,34 @@ col1, col2 = st.columns([1, 1.8], gap="large")
 
 with col1:
     st.markdown("""
-    <div style="padding: 25px; background-color: #f8f9fa; border-radius: 10px; width: 100%;">
-        <h4>🎮 Welcome to the Monty Hall Game Show!</h4>
-        <p>Imagine you're on a thrilling game show, standing in front of three closed doors. Behind one of them is the <b>grand prize – a brand-new car</b>! The other two hide goats. Your goal? To drive away in that car!</p>
+    <div style="
+        padding: 25px; 
+        background-color: #f8f9fa; 
+        border-radius: 10px; 
+        width: 100%; 
+        line-height: 1.6;
+    ">
+        <h4 style="text-align: center;">🎮 Welcome to the Monty Hall Game Show!</h4>
+        <p style="text-align: justify;">
+            Imagine you're on a thrilling game show, standing in front of three closed doors. Behind one of them is the 
+            <b>grand prize – a brand-new car</b>! The other two hide goats. Your goal? To drive away in that car!
+        </p>
         
         <h4>🚪 How to Play: Read First!</h4>
-        <p>1️⃣ <b>Pick a door</b> (1, 2, or 3) – one of them hides the grand prize!</p>
-        <p>2️⃣ <b>The host, Monty Hall, who knows exactly where the car is</b>, will open a different door to reveal a goat.</p>
-        <p>3️⃣ <b>Now, you have a decision to make:</b> Stick with your original choice or switch to the remaining closed door.</p>
-        <p>4️⃣ <b>Final reveal:</b> The door you chose is opened – did you win the car or end up with a goat?</p>
+        <ol>
+            <li><b>Pick a door</b> (1, 2, or 3) – one of them hides the grand prize!</li>
+            <li><b>The host, Monty Hall, who knows exactly where the car is</b>, will open a different door to reveal a goat.</li>
+            <li><b>Now, you have a decision to make:</b> Stick with your original choice or switch to the remaining closed door.</li>
+            <li><b>Final reveal:</b> The door you chose is opened – did you win the car or end up with a goat?</li>
+        </ol>
         
-        <p>🎲 Heads up! This game follows <b>probability rules</b>. Believe it or not, switching doors actually gives you a <b>higher chance</b> of winning the car. 
-        A little probability magic might just tip the odds in your favor!</p>
+        <p style="text-align: justify;">
+            🎲 <b>Heads up!</b> This game follows <b>probability rules</b>. Believe it or not, switching doors actually 
+            gives you a <b>higher chance</b> of winning the car. A little probability magic might just tip the odds in your favor!
+        </p>
     </div>
     """, unsafe_allow_html=True)
+
 
 
 with col2:
