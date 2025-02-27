@@ -22,19 +22,22 @@ col1, col2 = st.columns([1, 1.8], gap="large")
 with col1:
     st.markdown("""
     <div style="padding: 25px; background-color: #f8f9fa; border-radius: 10px; width: 100%;">
-        <h4>🎮 How to Play: Read first!</h4>
-        <p>1️⃣ <b>Pick a door</b> (1, 2, or 3) – one of them hides a brand new car!</p>
-        <p>2️⃣ <b>The host reveals a door</b> that hides a goat.</p>
-        <p>3️⃣ <b>Choose to switch or stay</b>.</p>
-        <p>4️⃣ <b>Reveal the final choice</b> – see if you drive away in a car or walk away with a goat!</p>
-        <p>Heads up! This game follows <b>probability rules</b>, meaning the outcome is based on the <b>highest chance of winning a car</b>.</p>
-        <p>The future is full of surprises, but a little probability magic can tip the odds in your favor!</p>
+        <h4>🎮 Welcome to the Monty Hall Game Show!</h4>
+        <p>Imagine you're on a thrilling game show, standing in front of three closed doors. Behind one of them is the <b>grand prize – a brand-new car</b>! The other two hide goats. Your goal? To drive away in that car!</p>
+        
+        <h4>🚪 How to Play: Read First!</h4>
+        <p>1️⃣ <b>Pick a door</b> (1, 2, or 3) – one of them hides the grand prize!</p>
+        <p>2️⃣ <b>The host, Monty Hall, who knows exactly where the car is</b>, will open a different door to reveal a goat.</p>
+        <p>3️⃣ <b>Now, you have a decision to make:</b> Stick with your original choice or switch to the remaining closed door.</p>
+        <p>4️⃣ <b>Final reveal:</b> The door you chose is opened – did you win the car or end up with a goat?</p>
+        
+        <p>🎲 Heads up! This game follows <b>probability rules</b>. Believe it or not, switching doors actually gives you a <b>higher chance</b> of winning the car. 
+        A little probability magic might just tip the odds in your favor!</p>
     </div>
     """, unsafe_allow_html=True)
 
+
 with col2:
-    st.write("### It's Decision Time! Choose wisely!")
-    
     if "prizes" not in st.session_state:
         car_position = random.randint(0, 2)
         st.session_state.prizes = ['🐐', '🐐', '🐐']
@@ -117,7 +120,7 @@ col1, col2, col3 = st.columns(3, gap="large")
 
 with col1:
     st.markdown("<p class='footer-text'><b>The Monty Hall Problem Explained</b></p>", unsafe_allow_html=True)
-    st.markdown("<p class='footer-text'>The Monty Hall problem is a classic game show puzzle that puts your decision-making skills to the test! With doors, surprises, and a bit of probability magic, the outcome might not be what you expect.</p>", unsafe_allow_html=True)
+    st.markdown("<p class='footer-text'>The Monty Hall problem reveals how human intuition often struggles with probability and decision-making under uncertainty. It highlights several cognitive biases and reasoning errors that influence how we think.</p>", unsafe_allow_html=True)
     st.markdown("<p class='footer-text'><a href='https://behavioralscientist.org/steven-pinker-rationality-why-you-should-always-switch-the-monty-hall-problem-finally-explained/'>Read more</a></p>", unsafe_allow_html=True)
 
 with col2:
