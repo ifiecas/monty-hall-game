@@ -96,19 +96,27 @@ with col2:
         if st.button("🔄 Restart Game"):
             st.session_state.clear()
             st.rerun()
+st.markdown("""
+    <style>
+        .footer-text {
+            font-size: 14px;
+        }
+    </style>
+""", unsafe_allow_html=True)
 
 st.write("---")
 col1, col2, col3 = st.columns(3, gap="large")
+
 with col1:
-    st.subheader("📖 What is the Monty Hall Problem?")
-    st.write("The Monty Hall problem is a probability puzzle based on a game show. It demonstrates how switching choices can increase the chances of winning.")
-    st.write("[Read more](https://behavioralscientist.org/steven-pinker-rationality-why-you-should-always-switch-the-monty-hall-problem-finally-explained/)")
+    st.markdown("<h4 class='footer-text'>📖 What is the Monty Hall Problem?</h4>", unsafe_allow_html=True)
+    st.markdown("<p class='footer-text'>The Monty Hall problem is a classic game show puzzle that puts your decision-making skills to the test! With doors, surprises, and a bit of probability magic, the outcome might not be what you expect.</p>", unsafe_allow_html=True)
+    st.markdown("<a href='https://behavioralscientist.org/steven-pinker-rationality-why-you-should-always-switch-the-monty-hall-problem-finally-explained/' class='footer-text'>Read more</a>", unsafe_allow_html=True)
 
 with col2:
-    st.subheader("💡 How can this improve your everyday choices?")
-    st.write("Think of it like picking a checkout line at the grocery store. If a new lane opens up and is moving faster, switching could increase your chances of getting through quicker. The Monty Hall concept teaches us that sometimes, reconsidering our choices based on new information can lead to better outcomes.")
+    st.markdown("<h4 class='footer-text'>💡 How can this improve your everyday choices?</h4>", unsafe_allow_html=True)
+    st.markdown("<p class='footer-text'>Think of it like picking a checkout line at the grocery store. If a new lane opens up and is moving faster, switching could increase your chances of getting through quicker. The Monty Hall concept teaches us that sometimes, reconsidering our choices based on new information can lead to better outcomes.</p>", unsafe_allow_html=True)
 
 with col3:
-    st.subheader("🚀 Behind the Build")
-    st.write("Created by [**Ivy Fiecas-Borjal**](https://ifiecas.com/)")
-    st.write("Inspired by the Predictive Analytics class discussion with Dr. Omid Sianaki from Victoria University, Melbourne, Australia (Feb 2025).")
+    st.markdown("<h4 class='footer-text'>🚀 Behind the Build</h4>", unsafe_allow_html=True)
+    st.markdown("<p class='footer-text'>Created by <a href='https://ifiecas.com/' class='footer-text'><b>Ivy Fiecas-Borjal</b></a></p>", unsafe_allow_html=True)
+    st.markdown("<p class='footer-text'>Inspired by the Predictive Analytics class discussion with Dr. Omid Sianaki from Victoria University, Melbourne, Australia (Feb 2025).</p>", unsafe_allow_html=True)
