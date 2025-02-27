@@ -25,7 +25,7 @@ with col1:
     # Completely rewritten welcome box with cleaner HTML
     st.markdown("""
         <div style="padding: 25px; background-color: #f8f9fa; border-radius: 10px; width: 100%; line-height: 1.6; font-family: Arial, sans-serif; word-break: break-word;">
-            <h4 style="text-align: center; margin-bottom: 13px;">🎮 Welcome to the Monty Hall Game!</h4>
+            <h4 style="text-align: center; margin-bottom: 13px;">🎮 How to Play: Read First!</h4>
             <div style="text-align: justify;">
                 Imagine you're on a thrilling game show, standing in front of three closed doors. 
                 Behind one of them is the <b>grand prize – a brand-new car</b>! The other two hide goats. 
@@ -38,8 +38,7 @@ with col1:
                 <div><b>4️⃣ Final reveal:</b> The door you chose is opened – did you win the car or end up with a goat?</div>
             </div>
             <div style="text-align: justify; font-size: 16px; margin-top: 20px;">
-                🎲 <b>This app follows probability rules—</b>the door with the <b>highest probability</b> 
-                will <b>always</b> have the car behind it!
+                <b>Heads-up! This app follows probability rules—</b>the door with the <b>highest probability will always have the car behind it!
             </div>
         </div>
     """, unsafe_allow_html=True)
