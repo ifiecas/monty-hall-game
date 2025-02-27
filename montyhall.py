@@ -22,7 +22,7 @@ col1, col2 = st.columns([1, 1.8], gap="large")
 import streamlit.components.v1 as components
 
 with col1:
-    components.html(
+    st.markdown(
         """
         <div style="
             padding: 25px; 
@@ -31,27 +31,28 @@ with col1:
             width: 100%; 
             line-height: 1.6;
             font-family: Arial, sans-serif;
+            word-break: break-word;
         ">
-            <h4 style="text-align: center;">🎮 Welcome to the Monty Hall Game!</h4>
+            <h4 style="text-align: center; margin-bottom: 15px;">🎮 Welcome to the Monty Hall Game!</h4>
             <p style="text-align: justify;">
                 Imagine you're on a thrilling game show, standing in front of three closed doors. 
                 Behind one of them is the <b>grand prize – a brand-new car</b>! The other two hide goats. 
                 Your goal? To drive away in that car!
             </p>
             
-            <h4>🚪 How to Play: Read First!</h4>
+            <h4 style="margin-top: 20px;">📜 How to Play: Read First!</h4>
             <p><b>1️⃣ Pick a door</b> (1, 2, or 3) – one of them hides the grand prize!</p>
             <p><b>2️⃣ The host, Monty Hall, who knows exactly where the car is</b>, will open a different door to reveal a goat.</p>
             <p><b>3️⃣ Now, you have a decision to make:</b> Stick with your original choice or switch to the remaining closed door.</p>
             <p><b>4️⃣ Final reveal:</b> The door you chose is opened – did you win the car or end up with a goat?</p>
             
-            <p style="text-align: justify;">
+            <p style="text-align: justify; font-size: 16px; margin-top: 20px;">
                 🎲 <b>This app follows probability rules—</b>the door with the <b>highest probability</b> 
                 will <b>always</b> have the car behind it!
             </p>
         </div>
         """,
-        height=400
+        unsafe_allow_html=True
     )
 
 
