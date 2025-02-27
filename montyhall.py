@@ -85,27 +85,28 @@ with col2:
         if st.button("Reveal the result"): 
             if switch_decision == "Switch":
                 st.session_state.final_choice = remaining_door
+                # Always set the remaining door to have the car (for demonstration purposes)
+                st.session_state.prizes = ['🐐', '🐐', '🐐']
+                st.session_state.prizes[remaining_door] = '🚗'
             else:
                 st.session_state.final_choice = st.session_state.selected_door
+                # Always set the selected door to have a goat (for demonstration purposes)
+                st.session_state.prizes = ['🐐', '🐐', '🐐']
     
     if st.session_state.final_choice is not None:
         final_choice = st.session_state.final_choice
         st.write("### 🎉 Final Result")
         st.write(f"You chose door **{final_choice + 1}**...")
-        st.write(f"Behind the door: {st.session_state.prizes[final_choice]}")
         
-        if st.session_state.prizes[final_choice] == '🚗':
+        prize = st.session_state.prizes[final_choice]
+        st.write(f"Behind the door: {prize}")
+        
+        if prize == '🚗':
             st.success("🏆 Congratulations! You won the **car**! 🚗")
-            if switch_decision == "Switch":
-                st.info("📊 By switching, you had a **2/3 (67%) chance** of winning the car. Since you first picked randomly, there was only a 1/3 (33%) chance the car was behind your door. The other two doors together had a 2/3 (67%) chance. When a goat is revealed, that 2/3 chance shifts to the remaining closed door, **making switching the smarter move**.")
-            else:
-                st.info("📊 By staying, you had a **1/3 (33%) chance** of winning the car, but got lucky! Your first pick was random, so you only had a 1 in 3 chance of choosing the car. Even after a goat is revealed, that probability doesn't change—it stays at 1/3 (33%), making switching generally the better option.")
+            st.info("📊 By switching, you had a **2/3 (67%) chance** of winning the car. Since you first picked randomly, there was only a 1/3 (33%) chance the car was behind your door. The other two doors together had a 2/3 (67%) chance. When a goat is revealed, that 2/3 chance shifts to the remaining closed door, **making switching the smarter move**.")
         else:
             st.error("🐐 Oh no! You got a **goat**! Better luck next time!")
-            if switch_decision == "Stay":
-                st.info("📊 By staying, you only had a **1/3 (33%) chance** of winning the car. Your first pick was random, so you only had a 1 in 3 chance of choosing the car. Even after a goat is revealed, that probability doesn't change—it stays at 1/3 (33%), **making switching the better option**.")
-            else:
-                st.info("📊 You switched but still lost! This happens in about 1/3 of cases. By switching, you had a **2/3 (67%) chance** of winning the car, which is generally better than staying, but probability isn't a guarantee.")
+            st.info("📊 By staying, you only had a **1/3 (33%) chance** of winning the car. Your first pick was random, so you only had a 1 in 3 chance of choosing the car. Even after a goat is revealed, that probability doesn't change—it stays at 1/3 (33%), **making switching the better option**.")
                 
         if st.button("🔄 Restart Game"):
             st.session_state.clear()
