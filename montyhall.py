@@ -98,11 +98,14 @@ with col2:
             st.rerun()
 
 
-
 st.markdown("""
     <style>
         .footer-text {
             font-size: 12px;
+        }
+        .footer-text a {
+            font-size: 12px;
+            text-decoration: none;
         }
     </style>
 """, unsafe_allow_html=True)
