@@ -97,14 +97,15 @@ with col2:
             st.session_state.clear()
             st.rerun()
 
+
 st.markdown("""
     <style>
         .footer-text {
-            font-size: 12px;
+            font-size: 14px;  /* Adjusted for better readability */
             text-decoration: none;
         }
         .footer-text a {
-            font-size: 12px;
+            font-size: 14px; /* Ensures links are the same size as other text */
             text-decoration: none;
             color: inherit;
         }
