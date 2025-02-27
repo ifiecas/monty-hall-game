@@ -104,10 +104,11 @@ with col2:
         if prize == '🚗':
             st.success("🏆 Congratulations! You won the **car**! 🚗")
             st.info("📊 By switching, you had a **2/3 (67%) chance** of winning the car. Since you first picked randomly, there was only a 1/3 (33%) chance the car was behind your door. The other two doors together had a 2/3 (67%) chance. When a goat is revealed, that 2/3 chance shifts to the remaining closed door, **making switching the smarter move**.")
+            st.info("📊 By staying, you only had a **1/3 (33%) chance** of winning the car. Your first pick was random, so you only had a 1 in 3 chance of choosing the car. Even after a goat is revealed, that probability doesn't change—it stays at 1/3 (33%), **making switching the better option**.")
         else:
             st.error("🐐 Oh no! You got a **goat**! Better luck next time!")
             st.info("📊 By staying, you only had a **1/3 (33%) chance** of winning the car. Your first pick was random, so you only had a 1 in 3 chance of choosing the car. Even after a goat is revealed, that probability doesn't change—it stays at 1/3 (33%), **making switching the better option**.")
-                
+            st.info("📊 By switching, you had a **2/3 (67%) chance** of winning the car. Since you first picked randomly, there was only a 1/3 (33%) chance the car was behind your door. The other two doors together had a 2/3 (67%) chance. When a goat is revealed, that 2/3 chance shifts to the remaining closed door, **making switching the smarter move**.")
         if st.button("🔄 Restart Game"):
             st.session_state.clear()
             st.rerun()
