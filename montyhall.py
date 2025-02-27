@@ -20,7 +20,7 @@ st.markdown("""
 col1, col2 = st.columns([1, 1.8], gap="large")
 
 with col1:
-    st.markdown(
+    st.write(
         """
         <div style="
             padding: 25px; 
@@ -44,12 +44,13 @@ with col1:
             <p><b>4️⃣ Final reveal:</b> The door you chose is opened – did you win the car or end up with a goat?</p>
             
             <p style="text-align: justify;">
-                🎲 <b>Heads up!</b>This app follows **probability rules**—the door with the **highest probability** will **always** have the car behind it!</b>. 
+                🎲 <b>Heads up! This app follows probability rules—</b>the door with the <b>highest probability</b> will <b>always</b> have the car behind it!
             </p>
         </div>
         """,
         unsafe_allow_html=True
     )
+
 
 
 
