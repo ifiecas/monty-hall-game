@@ -19,8 +19,10 @@ st.markdown("""
 
 col1, col2 = st.columns([1, 1.8], gap="large")
 
+import streamlit.components.v1 as components
+
 with col1:
-    st.markdown(
+    components.html(
         """
         <div style="
             padding: 25px; 
@@ -49,9 +51,8 @@ with col1:
             </p>
         </div>
         """,
-        unsafe_allow_html=True
+        height=400
     )
-
 
 
 
