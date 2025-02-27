@@ -38,7 +38,7 @@ with col1:
                 <div>4️⃣ Final reveal: The door you chose is opened – did you win the car or end up with a goat?</div>
             </div>
             <div style="text-align: justify; font-size: 16px; margin-top: 20px;">
-                Heads-up! <b>This app follows probability rules</b>—the door with the highest probability will always have the car behind it!
+                ⚠️ Heads up! This app follows probability rules—the door with the highest probability will always have the car behind it!
             </div>
         </div>
     """, unsafe_allow_html=True)
