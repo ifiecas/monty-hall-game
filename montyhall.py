@@ -32,10 +32,10 @@ with col1:
                 Your goal? To drive away in that car!
             </div>
             <div style="margin-top: 15px;">
-                <div><b>1️⃣ Pick a door</b> (1, 2, or 3) – one of them hides the grand prize!</div>
-                <div><b>2️⃣ The host, Monty Hall, who knows exactly where the car is</b>, will open a different door to reveal a goat.</div>
-                <div><b>3️⃣ Now, you have a decision to make:</b> Stick with your original choice or switch to the remaining closed door.</div>
-                <div><b>4️⃣ Final reveal:</b> The door you chose is opened – did you win the car or end up with a goat?</div>
+                <div>1️⃣ Pick a door (1, 2, or 3) – one of them hides the grand prize!</div>
+                <div>2️⃣ The host, Monty Hall, who knows exactly where the car is, will open a different door to reveal a goat.</div>
+                <div>3️⃣ Now, you have a decision to make: Stick with your original choice or switch to the remaining closed door.</div>
+                <div>4️⃣ Final reveal: The door you chose is opened – did you win the car or end up with a goat?</div>
             </div>
             <div style="text-align: justify; font-size: 16px; margin-top: 20px;">
                 <b>Heads-up! <b>This app follows probability rules—</b>the door with the highest probability will always have the car behind it!
