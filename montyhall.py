@@ -97,15 +97,16 @@ with col2:
             st.session_state.clear()
             st.rerun()
 
-
 st.markdown("""
     <style>
         .footer-text {
             font-size: 12px;
+            text-decoration: none;
         }
         .footer-text a {
             font-size: 12px;
             text-decoration: none;
+            color: inherit;
         }
     </style>
 """, unsafe_allow_html=True)
@@ -116,7 +117,7 @@ col1, col2, col3 = st.columns(3, gap="large")
 with col1:
     st.markdown("<p class='footer-text'><b>The Monty Hall Problem Explained</b></p>", unsafe_allow_html=True)
     st.markdown("<p class='footer-text'>The Monty Hall problem is a classic game show puzzle that puts your decision-making skills to the test! With doors, surprises, and a bit of probability magic, the outcome might not be what you expect.</p>", unsafe_allow_html=True)
-    st.markdown("<a href='https://behavioralscientist.org/steven-pinker-rationality-why-you-should-always-switch-the-monty-hall-problem-finally-explained/' class='footer-text'>Read more</a>", unsafe_allow_html=True)
+    st.markdown("<p class='footer-text'><a href='https://behavioralscientist.org/steven-pinker-rationality-why-you-should-always-switch-the-monty-hall-problem-finally-explained/'>Read more</a></p>", unsafe_allow_html=True)
 
 with col2:
     st.markdown("<p class='footer-text'><b>How can this improve your everyday choices?</b></p>", unsafe_allow_html=True)
@@ -124,5 +125,5 @@ with col2:
 
 with col3:
     st.markdown("<p class='footer-text'><b>Behind the Build</b></p>", unsafe_allow_html=True)
-    st.markdown("<p class='footer-text'>Created by <a href='https://ifiecas.com/' class='footer-text'>Ivy Fiecas-Borjal</a></p>", unsafe_allow_html=True)
+    st.markdown("<p class='footer-text'>Created by <a href='https://ifiecas.com/'>Ivy Fiecas-Borjal</a></p>", unsafe_allow_html=True)
     st.markdown("<p class='footer-text'>Inspired by the Predictive Analytics class discussion with Dr. Omid Sianaki from Victoria University, Melbourne, Australia (Feb 2025).</p>", unsafe_allow_html=True)
