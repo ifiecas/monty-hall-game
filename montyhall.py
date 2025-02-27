@@ -97,17 +97,16 @@ with col2:
             st.session_state.clear()
             st.rerun()
 
-
 st.markdown("""
     <style>
         .footer-text {
             font-size: 13px;
             text-decoration: none;
         }
-        .footer-text a {
-            font-size: 13px;
+        .footer-text a, .footer-text a:visited, .footer-text a:active {
+            font-size: 13px !important;  /* Force same font size */
             text-decoration: none;
-            color: orange;  /* Set links to orange */
+            color: orange !important;  /* Ensure orange links */
             font-weight: bold;
         }
     </style>
@@ -127,5 +126,5 @@ with col2:
 
 with col3:
     st.markdown("<p class='footer-text'><b>Behind the Build</b></p>", unsafe_allow_html=True)
-    st.markdown("<p class='footer-text'>Created by <a href='https://ifiecas.com/'>Ivy Fiecas-Borjal</a></p>")
+    st.markdown("<p class='footer-text'>Created by <a href='https://ifiecas.com/'>Ivy Fiecas-Borjal</a></p>", unsafe_allow_html=True)
     st.markdown("<p class='footer-text'>Inspired by the Predictive Analytics class discussion with Dr. Omid Sianaki from Victoria University, Melbourne, Australia (Feb 2025).</p>", unsafe_allow_html=True)
