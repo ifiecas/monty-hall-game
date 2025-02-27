@@ -22,37 +22,27 @@ col1, col2 = st.columns([1, 1.8], gap="large")
 import streamlit.components.v1 as components
 
 with col1:
-    st.markdown(
-        """
-        <div style="
-            padding: 25px; 
-            background-color: #f8f9fa; 
-            border-radius: 10px; 
-            width: 100%; 
-            line-height: 1.6;
-            font-family: Arial, sans-serif;
-            word-break: break-word;
-        ">
+    # Completely rewritten welcome box with cleaner HTML
+    st.markdown("""
+        <div style="padding: 25px; background-color: #f8f9fa; border-radius: 10px; width: 100%; line-height: 1.6; font-family: Arial, sans-serif; word-break: break-word;">
             <h4 style="text-align: center; margin-bottom: 13px;">🎮 Welcome to the Monty Hall Game!</h4>
-            <p style="text-align: justify;">
+            <div style="text-align: justify;">
                 Imagine you're on a thrilling game show, standing in front of three closed doors. 
                 Behind one of them is the <b>grand prize – a brand-new car</b>! The other two hide goats. 
                 Your goal? To drive away in that car!
-            </p>
-
-            <p><b>1️⃣ Pick a door</b> (1, 2, or 3) – one of them hides the grand prize!</p>
-            <p><b>2️⃣ The host, Monty Hall, who knows exactly where the car is</b>, will open a different door to reveal a goat.</p>
-            <p><b>3️⃣ Now, you have a decision to make:</b> Stick with your original choice or switch to the remaining closed door.</p>
-            <p><b>4️⃣ Final reveal:</b> The door you chose is opened – did you win the car or end up with a goat?</p>
-            
-            <p style="text-align: justify; font-size: 16px; margin-top: 20px;">
+            </div>
+            <div style="margin-top: 15px;">
+                <div><b>1️⃣ Pick a door</b> (1, 2, or 3) – one of them hides the grand prize!</div>
+                <div><b>2️⃣ The host, Monty Hall, who knows exactly where the car is</b>, will open a different door to reveal a goat.</div>
+                <div><b>3️⃣ Now, you have a decision to make:</b> Stick with your original choice or switch to the remaining closed door.</div>
+                <div><b>4️⃣ Final reveal:</b> The door you chose is opened – did you win the car or end up with a goat?</div>
+            </div>
+            <div style="text-align: justify; font-size: 16px; margin-top: 20px;">
                 🎲 <b>This app follows probability rules—</b>the door with the <b>highest probability</b> 
                 will <b>always</b> have the car behind it!
-            </p>            
+            </div>
         </div>
-        """,
-        unsafe_allow_html=True
-    )
+    """, unsafe_allow_html=True)
 
 with col2:
     if "prizes" not in st.session_state:
@@ -95,9 +85,9 @@ with col2:
         
         if st.button("Reveal the result"): 
             if switch_decision == "Switch":
-                st.session_state.final_choice = remaining_door  # Switching always results in winning the car
+                st.session_state.final_choice = remaining_door
             else:
-                st.session_state.final_choice = st.session_state.selected_door  # Staying always results in getting a goat
+                st.session_state.final_choice = st.session_state.selected_door
     
     if st.session_state.final_choice is not None:
         final_choice = st.session_state.final_choice
@@ -105,14 +95,19 @@ with col2:
         st.write(f"You chose door **{final_choice + 1}**...")
         st.write(f"Behind the door: {st.session_state.prizes[final_choice]}")
         
-        if switch_decision == "Switch":
+        if st.session_state.prizes[final_choice] == '🚗':
             st.success("🏆 Congratulations! You won the **car**! 🚗")
-            st.info("📊 By switching, you had a **2/3 (67%) chance** of winning the car. Since you first picked randomly, there was only a 1/3 (33%) chance the car was behind your door. The other two doors together had a 2/3 (67%) chance. When a goat is revealed, that 2/3 chance shifts to the remaining closed door, **making switching the smarter move**.")
-            st.info("📊 By staying, you only had a **1/3 (33%) chance** of winning the car. Your first pick was random, so you only had a 1 in 3 chance of choosing the car. Even after a goat is revealed, that probability doesn't change—it stays at 1/3 (33%), making switching the better option.")
+            if switch_decision == "Switch":
+                st.info("📊 By switching, you had a **2/3 (67%) chance** of winning the car. Since you first picked randomly, there was only a 1/3 (33%) chance the car was behind your door. The other two doors together had a 2/3 (67%) chance. When a goat is revealed, that 2/3 chance shifts to the remaining closed door, **making switching the smarter move**.")
+            else:
+                st.info("📊 By staying, you had a **1/3 (33%) chance** of winning the car, but got lucky! Your first pick was random, so you only had a 1 in 3 chance of choosing the car. Even after a goat is revealed, that probability doesn't change—it stays at 1/3 (33%), making switching generally the better option.")
         else:
             st.error("🐐 Oh no! You got a **goat**! Better luck next time!")
-            st.info("📊 By staying, you only had a **1/3 (33%) chance** of winning the car. Your first pick was random, so you only had a 1 in 3 chance of choosing the car. Even after a goat is revealed, that probability doesn't change—it stays at 1/3 (33%), **making switching the better option**.")
-            st.info("📊 By switching, you had a **2/3 (67%) chance** of winning the car. Since you first picked randomly, there was only a 1/3 chance the car was behind your door. The other two doors together had a 2/3 (67%) chance. When a goat is revealed, that 2/3 (67%) chance shifts to the remaining closed door, making switching the smarter move.")
+            if switch_decision == "Stay":
+                st.info("📊 By staying, you only had a **1/3 (33%) chance** of winning the car. Your first pick was random, so you only had a 1 in 3 chance of choosing the car. Even after a goat is revealed, that probability doesn't change—it stays at 1/3 (33%), **making switching the better option**.")
+            else:
+                st.info("📊 You switched but still lost! This happens in about 1/3 of cases. By switching, you had a **2/3 (67%) chance** of winning the car, which is generally better than staying, but probability isn't a guarantee.")
+                
         if st.button("🔄 Restart Game"):
             st.session_state.clear()
             st.rerun()
