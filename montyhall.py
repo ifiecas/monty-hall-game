@@ -9,6 +9,9 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
+# Restore the original banner image
+st.image("https://i.postimg.cc/hP4tGy57/Picture-2.png", use_container_width=True)
+
 # Custom CSS for better styling
 st.markdown("""
     <style>
@@ -55,16 +58,6 @@ st.markdown("""
             padding: 15px;
             border-radius: 8px;
             margin: 15px 0;
-        }
-        
-        /* Banner styling */
-        .banner {
-            background-image: linear-gradient(135deg, #3498db, #8e44ad);
-            border-radius: 10px;
-            padding: 20px;
-            color: white;
-            margin-bottom: 20px;
-            text-align: center;
         }
         
         /* Game info box */
@@ -137,14 +130,6 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Banner with title
-st.markdown("""
-    <div class="banner">
-        <h1>🎮 The Monty Hall Game 🚪</h1>
-        <p>Test your probability intuition with this classic problem!</p>
-    </div>
-""", unsafe_allow_html=True)
-
 # Main content layout
 col1, col2 = st.columns([1, 1.8], gap="large")
 
@@ -152,7 +137,7 @@ with col1:
     # Game instructions box
     st.markdown("""
         <div class="game-info">
-            <h4 style="text-align: center; margin-bottom: 15px; color: #3498db;">📋 How to Play</h4>
+            <h4 style="text-align: center; margin-bottom: 15px; color: #3498db;">🎮 How to Play: Read First!</h4>
             <div style="text-align: justify; margin-bottom: 15px;">
                 Imagine you're on a thrilling game show, standing in front of three closed doors. 
                 Behind one of them is the <b>grand prize – a brand-new car</b>! The other two hide goats. 
@@ -165,44 +150,10 @@ with col1:
                 <div style="margin-bottom: 10px;"><span style="display:inline-block; background-color: #3498db; color: white; border-radius: 50%; width: 25px; height: 25px; text-align: center; margin-right: 10px;">4</span> Final reveal: The door you chose is opened – did you win the car or end up with a goat?</div>
             </div>
             <div style="text-align: justify; font-size: 15px; margin-top: 15px; padding: 10px; background-color: #fff3cd; border-left: 4px solid #ffc107; border-radius: 4px;">
-                ⚠️ <b>Probability Hint:</b> This app demonstrates the Monty Hall Problem perfectly—switching doors gives you a 2/3 chance of winning!
+                ⚠️ <b>Heads up!</b> This app follows probability rules—the door with the highest probability will always have the car behind it!
             </div>
         </div>
     """, unsafe_allow_html=True)
-    
-    # Game stats - could track wins/losses across sessions
-    if "games_played" not in st.session_state:
-        st.session_state.games_played = 0
-        st.session_state.switches = 0
-        st.session_state.stays = 0
-        st.session_state.switch_wins = 0
-        st.session_state.stay_wins = 0
-    
-    # Only show stats if games have been played
-    if st.session_state.games_played > 0:
-        st.markdown("""
-            <div style="padding: 20px; background-color: #f8f9fa; border-radius: 10px; margin-top: 20px; border-left: 5px solid #2ecc71;">
-                <h4 style="text-align: center; color: #2ecc71; margin-bottom: 15px;">📊 Your Game Stats</h4>
-                <table style="width: 100%; border-collapse: collapse;">
-                    <tr>
-                        <td style="padding: 8px; border-bottom: 1px solid #ddd;"><b>Games Played:</b></td>
-                        <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: right;">{}</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 8px; border-bottom: 1px solid #ddd;"><b>Switch Success Rate:</b></td>
-                        <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: right;">{:.1f}%</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 8px; border-bottom: 1px solid #ddd;"><b>Stay Success Rate:</b></td>
-                        <td style="padding: 8px; border-bottom: 1px solid #ddd; text-align: right;">{:.1f}%</td>
-                    </tr>
-                </table>
-            </div>
-        """.format(
-            st.session_state.games_played,
-            (st.session_state.switch_wins / st.session_state.switches * 100) if st.session_state.switches > 0 else 0,
-            (st.session_state.stay_wins / st.session_state.stays * 100) if st.session_state.stays > 0 else 0
-        ), unsafe_allow_html=True)
 
 with col2:
     # Game area
@@ -219,14 +170,6 @@ with col2:
             st.session_state.result = None
             st.session_state.switch_decision = None
             st.session_state.original_prizes = st.session_state.prizes.copy()
-
-        # Game state area with better styling
-        st.markdown("""
-            <div style="background-color: #f0f7ff; padding: 20px; border-radius: 10px; margin-bottom: 20px; border-left: 5px solid #3498db;">
-                <h3 style="color: #3498db; margin-bottom: 15px;">🎲 Game Progress</h3>
-                <div id="game-status">Playing the Monty Hall Game...</div>
-            </div>
-        """, unsafe_allow_html=True)
 
         # Door selection area
         st.markdown("<h3 style='color: #2c3e50;'>🚪 Choose a Door</h3>", unsafe_allow_html=True)
@@ -288,8 +231,7 @@ with col2:
         if st.session_state.selected_door is not None and st.session_state.revealed_door is not None:
             st.markdown(f"""
                 <div class="result-animation" style="background-color: #fff3cd; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #ffc107;">
-                    <h4 style="color: #856404;">🎭 Monty's Move</h4>
-                    <p>The host, Monty Hall, opens <b>Door {st.session_state.revealed_door + 1}</b> to reveal a goat! 🐐</p>
+                    <h4 style="color: #856404;">🐐 The host reveals a goat behind Door {st.session_state.revealed_door + 1}!</h4>
                     <p>Now comes the critical decision...</p>
                 </div>
             """, unsafe_allow_html=True)
@@ -297,8 +239,7 @@ with col2:
             # Create a nicer decision box
             st.markdown("""
                 <div style="background-color: #e8f4f8; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #3498db;">
-                    <h4 style="color: #2980b9;">🤔 Decision Time</h4>
-                    <p>Do you want to stick with your original choice or switch to the remaining door?</p>
+                    <h4 style="color: #2980b9;">🤔 Do you want to switch your choice?</h4>
                 </div>
             """, unsafe_allow_html=True)
             
@@ -317,9 +258,6 @@ with col2:
                     st.session_state.final_choice = st.session_state.selected_door
                     # Always set the selected door to have a goat (for demonstration purposes)
                     st.session_state.prizes = ['🐐', '🐐', '🐐']
-                    # Update stats
-                    st.session_state.games_played += 1
-                    st.session_state.stays += 1
             
             with cols[1]:
                 switch_button = st.button(
@@ -333,10 +271,6 @@ with col2:
                     # Always set the remaining door to have the car (for demonstration purposes)
                     st.session_state.prizes = ['🐐', '🐐', '🐐']
                     st.session_state.prizes[remaining_door] = '🚗'
-                    # Update stats
-                    st.session_state.games_played += 1
-                    st.session_state.switches += 1
-                    st.session_state.switch_wins += 1
         
         # Display the final result
         if st.session_state.final_choice is not None:
@@ -356,16 +290,26 @@ with col2:
                 st.success("🏆 **Congratulations!** You won the **car**! 🚗")
                 explanation = """
                     <div style="padding: 20px; background-color: #e1f5fe; border-radius: 8px; margin: 20px 0; border-left: 4px solid #03a9f4;">
-                        <h4 style="color: #0277bd;">📊 The Math Behind Your Win</h4>
-                        <p><b>By switching, you had a 2/3 (67%) chance of winning the car.</b></p>
+                        <h4 style="color: #0277bd;">📊 By switching, you had a <b>2/3 (67%)</b> chance of winning the car.</h4>
                         <p>This happens because:</p>
                         <ul>
-                            <li>Your first pick had a 1/3 chance of being the car</li>
-                            <li>The other two doors together had a 2/3 chance</li>
-                            <li>When Monty reveals a goat, that 2/3 probability shifts to the remaining door</li>
+                            <li>Your first pick had a <b>1/3 (33%)</b> chance of being the car</li>
+                            <li>The other two doors together had a <b>2/3 (67%)</b> chance</li>
+                            <li>When Monty reveals a goat, that <b>2/3 (67%)</b> probability shifts to the remaining door</li>
                             <li>Switching means you're betting that your original choice was wrong—which is statistically more likely</li>
                         </ul>
                         <p>The Monty Hall Problem demonstrates how our intuition about probability can be misleading!</p>
+                    </div>
+                    <div style="padding: 20px; background-color: #ffebee; border-radius: 8px; margin: 20px 0; border-left: 4px solid #f44336;">
+                        <h4 style="color: #c62828;">📊 By staying, you only had a <b>1/3 (33%)</b> chance of winning the car.</h4>
+                        <p>This happens because:</p>
+                        <ul>
+                            <li>Your initial choice was random with only a <b>1/3 (33%)</b> chance of being correct</li>
+                            <li>Revealing a goat doesn't change this initial probability</li>
+                            <li>The remaining door has a <b>2/3 (67%)</b> probability of hiding the car</li>
+                            <li>This is why switching is the mathematically optimal strategy!</li>
+                        </ul>
+                        <p>The Monty Hall Problem is counter-intuitive, but the math doesn't lie!</p>
                     </div>
                 """
                 st.markdown(explanation, unsafe_allow_html=True)
@@ -373,22 +317,32 @@ with col2:
                 st.error("🐐 **Oh no!** You got a **goat**! Better luck next time!")
                 explanation = """
                     <div style="padding: 20px; background-color: #ffebee; border-radius: 8px; margin: 20px 0; border-left: 4px solid #f44336;">
-                        <h4 style="color: #c62828;">📊 The Math Behind Your Loss</h4>
-                        <p><b>By staying, you had only a 1/3 (33%) chance of winning the car.</b></p>
+                        <h4 style="color: #c62828;">📊 By staying, you only had a <b>1/3 (33%)</b> chance of winning the car.</h4>
                         <p>This happens because:</p>
                         <ul>
-                            <li>Your initial choice was random with only a 1/3 chance of being correct</li>
+                            <li>Your initial choice was random with only a <b>1/3 (33%)</b> chance of being correct</li>
                             <li>Revealing a goat doesn't change this initial probability</li>
-                            <li>The remaining door has a 2/3 probability of hiding the car</li>
+                            <li>The remaining door has a <b>2/3 (67%)</b> probability of hiding the car</li>
                             <li>This is why switching is the mathematically optimal strategy!</li>
                         </ul>
                         <p>The Monty Hall Problem is counter-intuitive, but the math doesn't lie!</p>
+                    </div>
+                    <div style="padding: 20px; background-color: #e1f5fe; border-radius: 8px; margin: 20px 0; border-left: 4px solid #03a9f4;">
+                        <h4 style="color: #0277bd;">📊 By switching, you had a <b>2/3 (67%)</b> chance of winning the car.</h4>
+                        <p>This happens because:</p>
+                        <ul>
+                            <li>Your first pick had a <b>1/3 (33%)</b> chance of being the car</li>
+                            <li>The other two doors together had a <b>2/3 (67%)</b> chance</li>
+                            <li>When Monty reveals a goat, that <b>2/3 (67%)</b> probability shifts to the remaining door</li>
+                            <li>Switching means you're betting that your original choice was wrong—which is statistically more likely</li>
+                        </ul>
+                        <p>The Monty Hall Problem demonstrates how our intuition about probability can be misleading!</p>
                     </div>
                 """
                 st.markdown(explanation, unsafe_allow_html=True)
             
             # Play again button with better styling
-            if st.button("🔄 Play Again", use_container_width=True, type="primary"):
+            if st.button("🔄 Restart Game", use_container_width=True, type="primary"):
                 st.session_state.prizes = ['🐐', '🐐', '🐐']
                 car_position = random.randint(0, 2)
                 st.session_state.prizes[car_position] = '🚗'
@@ -415,5 +369,5 @@ with footer_cols[1]:
 
 with footer_cols[2]:
     st.markdown("<p class='footer-text'><b>Behind the Build</b></p>", unsafe_allow_html=True)
-    st.markdown("<p class='footer-text'>Created by <a href='https://ifiecas.com/'>Ivy Fiecas-Borjal</a></p>", unsafe_allow_html=True)
+    st.markdown("<p class='footer-text'>Created by <a href='https://ifiecas.com/'><b>Ivy Fiecas-Borjal</b></a></p>", unsafe_allow_html=True)
     st.markdown("<p class='footer-text'>Inspired by the Predictive Analytics class discussion with Dr. Omid Sianaki from Victoria University, Melbourne, Australia (Feb 2025).</p>", unsafe_allow_html=True)
