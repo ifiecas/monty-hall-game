@@ -101,13 +101,14 @@ with col2:
 st.markdown("""
     <style>
         .footer-text {
-            font-size: 14px;  /* Adjusted for better readability */
+            font-size: 13px;
             text-decoration: none;
         }
         .footer-text a {
-            font-size: 14px; /* Ensures links are the same size as other text */
+            font-size: 13px;
             text-decoration: none;
-            color: inherit;
+            color: orange;  /* Set links to orange */
+            font-weight: bold;
         }
     </style>
 """, unsafe_allow_html=True)
