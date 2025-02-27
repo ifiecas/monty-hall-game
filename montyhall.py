@@ -38,7 +38,6 @@ with col1:
                 Imagine you're on a thrilling game show, standing in front of three closed doors. 
                 Behind one of them is the <b>grand prize – a brand-new car</b>! The other two hide goats. 
                 Your goal? To drive away in that car!
-            </p>
             
             <h4 style="margin-top: 20px;">📜 How to Play: Read First!</h4>
             <p><b>1️⃣ Pick a door</b> (1, 2, or 3) – one of them hides the grand prize!</p>
@@ -49,7 +48,7 @@ with col1:
             <p style="text-align: justify; font-size: 16px; margin-top: 20px;">
                 🎲 <b>This app follows probability rules—</b>the door with the <b>highest probability</b> 
                 will <b>always</b> have the car behind it!
-            </p>
+            </p>            </p>
         </div>
         """,
         unsafe_allow_html=True
