@@ -38,11 +38,12 @@ with col1:
                 Imagine you're on a thrilling game show, standing in front of three closed doors. 
                 Behind one of them is the <b>grand prize – a brand-new car</b>! The other two hide goats. 
                 Your goal? To drive away in that car!
+            </p>
 
-                <p><b>1️⃣ Pick a door</b> (1, 2, or 3) – one of them hides the grand prize!</p>
-                <p><b>2️⃣ The host, Monty Hall, who knows exactly where the car is</b>, will open a different door to reveal a goat.</p>
-                <p><b>3️⃣ Now, you have a decision to make:</b> Stick with your original choice or switch to the remaining closed door.</p>
-                <p><b>4️⃣ Final reveal:</b> The door you chose is opened – did you win the car or end up with a goat?</p>
+            <p><b>1️⃣ Pick a door</b> (1, 2, or 3) – one of them hides the grand prize!</p>
+            <p><b>2️⃣ The host, Monty Hall, who knows exactly where the car is</b>, will open a different door to reveal a goat.</p>
+            <p><b>3️⃣ Now, you have a decision to make:</b> Stick with your original choice or switch to the remaining closed door.</p>
+            <p><b>4️⃣ Final reveal:</b> The door you chose is opened – did you win the car or end up with a goat?</p>
             
             <p style="text-align: justify; font-size: 16px; margin-top: 20px;">
                 🎲 <b>This app follows probability rules—</b>the door with the <b>highest probability</b> 
@@ -52,9 +53,6 @@ with col1:
         """,
         unsafe_allow_html=True
     )
-
-
-
 
 with col2:
     if "prizes" not in st.session_state:
