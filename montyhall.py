@@ -127,5 +127,5 @@ with col2:
 
 with col3:
     st.markdown("<p class='footer-text'><b>Behind the Build</b></p>", unsafe_allow_html=True)
-    st.markdown("<p class='footer-text'>Created by <a href='https://ifiecas.com/'>Ivy Fiecas-Borjal</a></p>", unsafe_allow_html=True)
+    st.markdown("<p class='footer-text'>Created by <a href='https://ifiecas.com/'>Ivy Fiecas-Borjal</a></p>")
     st.markdown("<p class='footer-text'>Inspired by the Predictive Analytics class discussion with Dr. Omid Sianaki from Victoria University, Melbourne, Australia (Feb 2025).</p>", unsafe_allow_html=True)
