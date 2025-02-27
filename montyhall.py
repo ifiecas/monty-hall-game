@@ -27,7 +27,7 @@ with col1:
         <p>2️⃣ <b>The host reveals a door</b> that hides a goat.</p>
         <p>3️⃣ <b>Choose to switch or stay</b>.</p>
         <p>4️⃣ <b>Reveal the final choice</b> – see if you drive away in a car or walk away with a goat!</p>
-        <p>Heads up! This game follows <b>probability rules</b>, meaning the outcome is based on the <b>highest chance of winning</b>.</p>
+        <p>Heads up! This game follows <b>probability rules</b>, meaning the outcome is based on the <b>highest chance of winning a car</b>.</p>
         <p>The future is full of surprises, but a little probability magic can tip the odds in your favor!</p>
     </div>
     """, unsafe_allow_html=True)
