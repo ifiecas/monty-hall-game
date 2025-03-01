@@ -51,6 +51,9 @@ st.markdown("""
             padding: 30px 0 !important;
             font-size: 18px !important;
             margin: 10px 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            display: block !important;
         }
         
         /* Make success and error messages more prominent */
@@ -127,6 +130,41 @@ st.markdown("""
         .result-animation {
             animation: fadeIn 0.5s ease-out forwards;
         }
+        
+        /* Full height door buttons */
+        .door-button-container button {
+            height: 200px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: center !important;
+            font-size: 16px !important;
+            border-radius: 8px !important;
+            transition: all 0.3s ease !important;
+            border: 2px solid #9e9e9e !important;
+            background-color: #f5f5f5 !important;
+            color: #333 !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            width: 100% !important;
+        }
+        
+        .door-button-container button:hover:enabled {
+            transform: translateY(-5px) !important;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1) !important;
+        }
+        
+        /* Door button selected state */
+        .door-chosen button {
+            border: 2px solid #2196f3 !important;
+            background-color: #e3f2fd !important;
+        }
+        
+        /* Door button revealed state */
+        .door-revealed button {
+            border: 2px solid #f44336 !important;
+            background-color: #ffebee !important;
+        }
     </style>
 """, unsafe_allow_html=True)
 
@@ -174,7 +212,7 @@ with col2:
         # Door selection area
         st.markdown("<h3 style='color: #2c3e50;'>🚪 Choose a Door</h3>", unsafe_allow_html=True)
         
-        # Door display with improved styling
+        # Door display with buttons as the doors themselves
         cols = st.columns([1, 1, 1])
         
         def select_door(door):
@@ -185,47 +223,44 @@ with col2:
             st.session_state.result = None
             st.session_state.switch_decision = None
         
-        # Custom styled door buttons
+        # Custom door buttons
         for i, col in enumerate(cols):
+            door_class = ""
+            door_icon = "🚪"
             door_label = f"Door {i + 1}"
-            door_state = ""
             is_disabled = False
             
             if st.session_state.selected_door is not None:
                 if i == st.session_state.selected_door:
                     door_label = f"Door {i + 1} (Your choice)"
-                    door_state = "chosen"
+                    door_class = "door-chosen"
+                    is_disabled = True
                 elif i == st.session_state.revealed_door:
                     door_label = f"Door {i + 1} (Goat revealed)"
-                    door_state = "revealed"
-                is_disabled = True
+                    door_class = "door-revealed"
+                    door_icon = "🐐"
+                    is_disabled = True
+                else:
+                    is_disabled = True
             
-            # Door styling based on state
-            if door_state == "chosen":
-                door_style = "background-color: #e3f2fd; border: 2px solid #2196f3;"
-            elif door_state == "revealed":
-                door_style = "background-color: #ffebee; border: 2px solid #f44336;"
-            else:
-                door_style = "background-color: #f5f5f5; border: 2px solid #9e9e9e;"
+            # Add a special CSS class to the column for door styling
+            col.markdown(f'<div class="door-button-container {door_class}">', unsafe_allow_html=True)
             
-            col.markdown(f"""
-                <div style="text-align: center; padding: 10px;">
-                    <div style="{door_style} border-radius: 8px; padding: 40px 10px; margin-bottom: 10px; text-align: center;">
-                        <div style="font-size: 24px;">{'🚪' if door_state != 'revealed' else '🐐'}</div>
-                        <div style="margin-top: 10px;">{door_label}</div>
-                    </div>
-                </div>
-            """, unsafe_allow_html=True)
-            
-            # Button below the door display
+            # The button itself is now the door
             col.button(
-                f"Select Door {i + 1}" if door_state == "" else door_label,
+                f"""
+                {door_icon}
+                
+                {door_label}
+                """,
                 key=f"door_{i}",
-                on_click=select_door if door_state == "" else None,
-                args=(i,) if door_state == "" else None,
+                on_click=select_door if not is_disabled else None,
+                args=(i,) if not is_disabled else None,
                 disabled=is_disabled,
                 use_container_width=True
             )
+            
+            col.markdown('</div>', unsafe_allow_html=True)
         
         # Show host reveal and decision section
         if st.session_state.selected_door is not None and st.session_state.revealed_door is not None:
