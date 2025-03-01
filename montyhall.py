@@ -133,19 +133,18 @@ st.markdown("""
         
         /* Full height door buttons */
         .door-button-container button {
-            height: 200px !important;
+            height: 60px !important;
             display: flex !important;
-            flex-direction: column !important;
             justify-content: center !important;
             align-items: center !important;
-            font-size: 16px !important;
+            font-size: 24px !important;
             border-radius: 8px !important;
             transition: all 0.3s ease !important;
             border: 2px solid #9e9e9e !important;
             background-color: #f5f5f5 !important;
             color: #333 !important;
-            padding: 0 !important;
-            margin: 0 !important;
+            padding: 10px !important;
+            margin-top: 5px !important;
             width: 100% !important;
         }
         
@@ -258,9 +257,11 @@ with col2:
             col.markdown(f'<div class="door-button-container {door_class}">', unsafe_allow_html=True)
             
             # The button itself is now the door
-            # Create a simpler button with just text (no HTML)
+            # Create a button with door_icon in span for separate styling
+            button_text = f"{door_label}"
+            col.markdown(f'<div style="text-align: center; padding: 0 10px;"><span style="font-size: 150px; line-height: 1.2;">{door_icon}</span></div>', unsafe_allow_html=True)
             col.button(
-                f"{door_icon}\n\n{door_label}",
+                button_text,
                 key=f"door_{i}",
                 on_click=select_door if not is_disabled else None,
                 args=(i,) if not is_disabled else None,
