@@ -165,6 +165,11 @@ st.markdown("""
             border: 2px solid #f44336 !important;
             background-color: #ffebee !important;
         }
+        
+        /* Make sure all door button content uses Helvetica */
+        .door-button-container button div {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+        }
     </style>
 """, unsafe_allow_html=True)
 
@@ -249,9 +254,8 @@ with col2:
             # The button itself is now the door
             col.button(
                 f"""
-                {door_icon}
-                
-                {door_label}
+                <div style="font-size: 60px; margin-bottom: 15px;">{door_icon}</div>
+                <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 24px;">{door_label}</div>
                 """,
                 key=f"door_{i}",
                 on_click=select_door if not is_disabled else None,
