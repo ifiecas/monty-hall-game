@@ -151,7 +151,7 @@ st.markdown("""
         
         /* Door icon styling */
         .door-button-container button {
-            font-size: 60px !important;
+            font-size: 100px !important;
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
         }
         
