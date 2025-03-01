@@ -149,6 +149,12 @@ st.markdown("""
             width: 100% !important;
         }
         
+        /* Door icon styling */
+        .door-button-container button {
+            font-size: 60px !important;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+        }
+        
         .door-button-container button:hover:enabled {
             transform: translateY(-5px) !important;
             box-shadow: 0 8px 15px rgba(0,0,0,0.1) !important;
@@ -252,11 +258,9 @@ with col2:
             col.markdown(f'<div class="door-button-container {door_class}">', unsafe_allow_html=True)
             
             # The button itself is now the door
+            # Create a simpler button with just text (no HTML)
             col.button(
-                f"""
-                <div style="font-size: 60px; margin-bottom: 15px;">{door_icon}</div>
-                <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 24px;">{door_label}</div>
-                """,
+                f"{door_icon}\n\n{door_label}",
                 key=f"door_{i}",
                 on_click=select_door if not is_disabled else None,
                 args=(i,) if not is_disabled else None,
